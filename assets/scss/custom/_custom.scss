@@ -67,7 +67,7 @@
         margin: 2em 0;
     }
     .menu-item {
-        .life, .tech, .about {
+        .life, .tech, .about, .tag  {
             display: inline-block;
         }
     }
@@ -245,6 +245,19 @@ blockquote.quote {
             }
         }
     }
+
+    .list-year+.list-part > .list-item::before {
+        content: unset;
+        margin-left: 0px;
+    }
+    .list-item ::before {
+        content: unset;
+    }
+    
+    
+    .list-item-title {
+        margin-left: 0px;
+    }
 }
 
 .post ol,.post  ul {
@@ -276,6 +289,8 @@ p code {
     padding: 0.2em 0.2em;
 }
 
-
+.site-brand .brand {
+    font-family: 'Noto Serif SC' !important;
+}
 
 // 

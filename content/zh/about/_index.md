@@ -30,6 +30,6 @@ Sweep the streets I used to own</em></p>
 
 此外，本博客是一个 [PWA](https://developers.google.com/web/progressive-web-apps/) 站点，你可以通过浏览器添加本博客到你的手机主屏或电脑桌面，随时随地查看本博客。如果你想订阅本博客，推荐 <a href="/atom.xml" target="_blank" rel="noopener">Atom</a>╱<a href="/rss.xml" target="_blank" rel="noopener">RSS</a>。当然，你也可以经常访问本博客，以及时获取到最新文章。
 
-如果你在浏览博客的过程中发现了任何问题（如错别字），欢迎前往 GitHub 提交 [Issue](https://github.com/reuixiy/acheng.vip/issues) 或直接修改相关文件后提交 PR。如果你有事想要联系我，可以通过邮件，邮箱地址：[hzc200012@163.com](mailto:hzc200012@163.com)。
+如果你在浏览博客的过程中发现了任何问题（如错别字），欢迎前往 GitHub 提交 [Issue](https://github.com/coder-itcheng/acheng.vip/issues) 或直接修改相关文件后提交 PR。如果你有事想要联系我，可以通过邮件，邮箱地址：[hzc200012@163.com](mailto:hzc200012@163.com)。
 
 最后，你也可以去我的[另一个博客](https://www.acheng.vip)看看😃...

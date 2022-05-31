@@ -1,11 +1,11 @@
 {
-    "name": "reuixiy",
-    "short_name": "reuixiy",
+    "name": "清风徐来",
+    "short_name": "清风徐来",
     "icons": [
         {
-            "src": "./icons/android-chrome-512x512.png",
+            "src": "./icons/favicon.ico",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/ico"
         }
     ],
     "theme_color": "#fff",

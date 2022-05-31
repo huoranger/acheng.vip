@@ -1300,7 +1300,7 @@ uglyURLs = false
     displayBackToTopInHome = false
 
     # 是否在移动端显示
-    displayBackToTopOnMobile = true
+    displayBackToTopOnMobile = false
 
     # 按钮图标
     backToTopIcon = "arrow-up"
