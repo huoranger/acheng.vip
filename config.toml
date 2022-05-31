@@ -2,7 +2,7 @@
 # 站点配置
 
 baseURL = "https://acheng.vip/"
-title = "reuixiy"
+title = "清风徐来"
 languageCode = "zh-CN"
 hasCJKLanguage = true
 # 版权信息（支持 Markdown）
@@ -16,7 +16,7 @@ newContentEditor = ""
 
 # i18n
 defaultContentLanguage = "zh"
-defaultContentLanguageInSubdir = false
+defaultContentLanguageInSubdir = true
 
 # 是否复数化列表页面的标题
 pluralizeListTitles = false
@@ -34,7 +34,7 @@ footnoteReturnLinkContents = "↩"
 enableGitInfo = true
 
 # 是否生成 robots.txt 文件
-enableRobotsTXT = false
+enableRobotsTXT = true
 
 # 每一分页的文章数（仅对「文章摘要」首页布局有效）
 paginate = 5
@@ -100,7 +100,7 @@ uglyURLs = false
     # 邮箱
     email = "hzc200012@163.com"
     # 座右铭或简介
-    motto = "Viva La Vida"
+    motto = "分享欲需要回应来延续，热情也是。"
     # 头像
     avatar = "/icons/favicon.ico"
     # 网站（默认值：baseURL）
@@ -219,12 +219,12 @@ uglyURLs = false
     #     weight = 5
     #     pre = "internal"
     #     post = "user-circle"
-    [[menu.main]]
-        weight = 6
-        identifier = "theme-switcher"
-    [[menu.main]]
-        weight = 7
-        identifier = "lang-switcher"
+    # [[menu.main]]
+    #     weight = 6
+    #     identifier = "theme-switcher"
+    # [[menu.main]]
+    #     weight = 7
+    #     identifier = "lang-switcher"
     # [[menu.main]]
     #     weight = 8
     #     identifier = "search"
@@ -244,12 +244,30 @@ uglyURLs = false
         post = "wpexplorer"
         identifier = "tech"
     [[menu.main]]
+        pageref = "/tags/"
+        name = "标签"
+        weight = 3
+        pre = "internal"
+        post = "tags"
+        identifier = "tag"
+    [[menu.main]]
         pageref = "/about/"
         name = "关于"
-        weight = 3
+        weight = 4
         pre = "internal"
         post = "user-circle"
         identifier = "about"
+
+    [[menu.main]]
+        weight = 5
+        identifier = "theme-switcher"
+    # [[menu.main]]
+    #     weight = 7
+    #     identifier = "lang-switcher"
+    [[menu.main]]
+        weight = 6
+        identifier = "search"
+        post = "search"
 
     ## 首页的底部链接
     # [[menu.home]]
@@ -273,7 +291,7 @@ uglyURLs = false
 
     ## 社交栏
     [[menu.socials]]
-        url = "https://github.com/reuixiy"
+        url = "https://github.com/coder-itcheng"
         name = "GitHub"
         weight = 1
         pre = "external"
@@ -291,19 +309,19 @@ uglyURLs = false
     ## 链接栏
     [[menu.links]]
         pageref = "/"
-        name = "Home"
+        name = "主页"
         weight = 1
         pre = "internal"
     [[menu.links]]
         pageref = "/tags/"
-        name = "Tags"
+        name = "标签"
         weight = 2
         pre = "internal"
-    [[menu.links]]
-        pageref = "/coldplay/"
-        name = "Coldplay"
-        weight = 3
-        pre = "internal"
+    # [[menu.links]]
+    #     pageref = "/coldplay/"
+    #     name = "Coldplay"
+    #     weight = 3
+    #     pre = "internal"
 
 
 
@@ -389,6 +407,7 @@ uglyURLs = false
     ## 「诗意人生」
     # 诗句，支持 Markdown
     homePoetry = ["暗夜中", "渴望一束光的关怀", "在白天", "却更渴望黑洞的吞噬", "因为好奇心，想看看黑暗中有什么"]
+
     # 底部链接的内间距，单位：em
     homeLinksPadding = 1
 
@@ -413,16 +432,16 @@ uglyURLs = false
     # 说明：用于 JSON-LD、Open Graph
 
     # 站点的描述
-    siteDescription = "这是 reuixiy 的生活与技术博客！怎么记住 reuixiy 呢？其实就是「一休儿」的拼音，只不过顺序是从右往左……"
+    siteDescription = "分享欲需要靠回应来延续，热情也是。"
     # 说明：用于 HTML 的头部元数据、JSON-LD、
     #      Open Graph、Atom、RSS
 
     # 站点的创建时间
-    siteCreatedTime = "2017-05-27T15:13:14+08:00"
+    siteCreatedTime = "2019-05-27T15:13:14+08:00"
     # 注意：请保持此格式，更改数字
 
     # 站点的推特帐号
-    siteTwitter = "reuixiy"
+    # siteTwitter = "reuixiy"
     # 说明：用于 Twitter Cards
 
 
@@ -656,7 +675,7 @@ uglyURLs = false
     # Mermaid (https://github.com/mermaid-js/mermaid)
 
     # 是否开启（全局设置）
-    enableMermaid = false
+    enableMermaid = true
     # 说明：文章的 Front Matter 中的 `mermaid`
     #      的优先级高于此处
 
@@ -1075,7 +1094,7 @@ uglyURLs = false
     ## 首字下沉
 
     # 是否开启（全局设置）
-    enableDropCap = true
+    enableDropCap = false
     # 说明：文章的 Front Matter 中的 `dropCap`
     #      的优先级高于此处
 
@@ -1272,7 +1291,7 @@ uglyURLs = false
     # 返回顶部按钮
 
     # 是否开启
-    enableBackToTop = false
+    enableBackToTop = true
 
     # 是否开启自动隐藏
     enableBackToTopAutoHide = true
@@ -1281,7 +1300,7 @@ uglyURLs = false
     displayBackToTopInHome = false
 
     # 是否在移动端显示
-    displayBackToTopOnMobile = false
+    displayBackToTopOnMobile = true
 
     # 按钮图标
     backToTopIcon = "arrow-up"
@@ -1314,14 +1333,14 @@ uglyURLs = false
     iconAnimation = true
 
     # 是否显示 Hugo 和 MemE 的链接
-    displayPoweredBy = true
+    displayPoweredBy = false
 
     # 是否显示站点的版权信息
     displaySiteCopyright = false
 
     # 自定义页脚（支持 Markdown）
-    customFooter = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)"
-
+    # customFooter = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)"
+    customFooter = ""
     displayBusuanziSiteUVAndPV = false
     busuanziSiteUVText = "本站访客数"
     busuanziSiteUVIcon = "user"
@@ -1332,7 +1351,7 @@ uglyURLs = false
     #      https://busuanzi.ibruce.info/
 
     # 社交链接
-    enableSocials = false
+    enableSocials = true
     # 说明：见 data/Socials.toml
 
 
@@ -1474,47 +1493,47 @@ uglyURLs = false
     weight = 1
 
 # 英文
-[languages.en]
-    languageName = "🇺🇸"
-    contentDir = "content/en"
-    weight = 2
-    languageCode = "en-US"
-    hasCJKLanguage = false
-    copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"
-[languages.en.taxonomies]
+# [languages.en]
+#     languageName = "🇺🇸"
+#     contentDir = "content/en"
+#     weight = 2
+#     languageCode = "en-US"
+#     hasCJKLanguage = false
+#     copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"
+# [languages.en.taxonomies]
     # category = "categories"
     # tag = "tags"
-[languages.en.menu]
-    # [[languages.en.menu.home]]
-    #     pageref = "/"
-    #     weight = 3
-    #     pre = "internal"
-    #     post = "user-circle"
-    #     identifier = "about"
-    [[languages.en.menu.main]]
-        pageref = "/about/"
-        name = "about"
-        weight = 1
-        pre = "internal"
-        post = "user-circle"
-        identifier = "about"
-    [[languages.en.menu.main]]
-        weight = 2
-        identifier = "theme-switcher"
-    [[languages.en.menu.main]]
-        weight = 3
-        identifier = "lang-switcher"
-[languages.en.params]
-    homePoetry = ["In the dark night", "Longing for a light of care", "In the daylight", "Desiring for the swallow of a black hole", "’Cause curiosity—seeks for what’s in the darkness"]
-    siteDescription = "Blog of reuixiy in English."
-    listDateFormat = "January 2"
-    fontFamilyTitle = "'Amstelvar', serif"
-    fontFamilyHeadings = "'Amstelvar', serif"
-    fontFamilyBody = "'Amstelvar', serif"
-    fontsLink = "https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-    lineHeight = 1.618
-    enableJustify = false
-    enableSmallCaps = true
-    enableEmphasisPoint = false
-    enableChinesePunctuationGlyphCorrection = false
-    customFooter = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"
+# [languages.en.menu]
+#     # [[languages.en.menu.home]]
+#     #     pageref = "/"
+#     #     weight = 3
+#     #     pre = "internal"
+#     #     post = "user-circle"
+#     #     identifier = "about"
+#     [[languages.en.menu.main]]
+#         pageref = "/about/"
+#         name = "about"
+#         weight = 1
+#         pre = "internal"
+#         post = "user-circle"
+#         identifier = "about"
+#     [[languages.en.menu.main]]
+#         weight = 2
+#         identifier = "theme-switcher"
+#     [[languages.en.menu.main]]
+#         weight = 3
+#         identifier = "lang-switcher"
+# [languages.en.params]
+#     homePoetry = ["In the dark night", "Longing for a light of care", "In the daylight", "Desiring for the swallow of a black hole", "’Cause curiosity—seeks for what’s in the darkness"]
+#     siteDescription = "Blog of reuixiy in English."
+#     listDateFormat = "January 2"
+#     fontFamilyTitle = "'Amstelvar', serif"
+#     fontFamilyHeadings = "'Amstelvar', serif"
+#     fontFamilyBody = "'Amstelvar', serif"
+#     fontsLink = "https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+#     lineHeight = 1.618
+#     enableJustify = false
+#     enableSmallCaps = true
+#     enableEmphasisPoint = false
+#     enableChinesePunctuationGlyphCorrection = false
+#     customFooter = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"

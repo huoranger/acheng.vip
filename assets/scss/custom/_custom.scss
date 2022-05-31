@@ -1,3 +1,6 @@
+:root {
+    --color-text: #141414;
+}
 .main {
     padding-bottom: 5em;
 }
@@ -34,16 +37,24 @@
 .about {
     color: #07b39b;
 }
+.tag {
+    color: #ef4e7b
+}
 
 .menu-item {
-    .life, .tech, .about {
+    .life, .tech, .about, .tag {
         display: none;
     }
 }
-
 [data-theme="dark"] {
     .theme-icon-dark, #lang-switcher, .footer-icon {
         opacity: 0.75;
+    }
+}
+
+[data-theme="ligth"] {
+    body {
+        color: var(--color-text);
     }
 }
 
@@ -84,7 +95,7 @@
 }
 
 .footer {
-    letter-spacing: -0.1em;
+    letter-spacing: 1px;
 }
 
 .viva-la-vida {
@@ -151,6 +162,11 @@ hr.coldplay {
     font-style: italic;
 }
 
+@font-face {
+    font-family: 'SF';
+    src: url('#{$baseRelURL}/fonts/SF-Pro-Text-Regular.otf');
+}
+
 :root {
     --text-wdth: 90;
     --text-opsz: 40;
@@ -163,6 +179,7 @@ body {
         'opsz' var(--text-opsz),
         'YTLC' var(--text-YTLC);
 }
+
 
 .post-title {
     font-family: 'glyph-correction', 'Amstelvar', 'Noto Serif SC', serif;
@@ -216,11 +233,7 @@ blockquote.quote {
             -moz-hyphens: auto;
         }
     }
-    &.italic {
-        p {
-            font-style: italic;
-        }
-    }
+
 }
 
 @media (max-width: $maxWidth) {
@@ -233,3 +246,36 @@ blockquote.quote {
         }
     }
 }
+
+.post ol,.post  ul {
+    padding-left: 1.2em;
+}
+
+
+em {
+    
+    font-style: normal;
+}
+
+.chroma .nb {
+    font-style: normal;
+}
+
+.highlight {
+    margin: 1rem 0;
+    // font-family: SF !important;
+    letter-spacing: 0.6px;
+}
+
+p code {
+    font-family: Noto Serif SC !important;
+    background: rgba(135,131,120,0.15);
+    color: #EB5757;
+    border-radius: 3px;
+    font-size: 80%;
+    padding: 0.2em 0.2em;
+}
+
+
+
+// 
