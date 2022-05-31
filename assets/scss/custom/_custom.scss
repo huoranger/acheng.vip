@@ -258,6 +258,9 @@ blockquote.quote {
     .list-item-title {
         margin-left: 0px;
     }
+    .site-brand .brand {
+        font-family: 'Noto Serif SC' !important;
+    }
 }
 
 .post ol,.post  ul {
@@ -283,14 +286,19 @@ em {
 p code {
     font-family: Noto Serif SC !important;
     background: rgba(135,131,120,0.15);
-    color: #EB5757;
+    // color: #EB5757;
     border-radius: 3px;
     font-size: 80%;
     padding: 0.2em 0.2em;
 }
+p code::before {
+    content: "`";
+    display: inline;
+}
 
-.site-brand .brand {
-    font-family: 'Noto Serif SC' !important;
+p code::after {
+    content: "`";
+    display: inline;
 }
 
 // 

@@ -1,6 +1,7 @@
 +++
 title = "关于"
 date = "2019-011-02T22:55:00+08:00"
+dropCap = true
 +++
 
 <video src="QmZgXJwFNRAyUEuU36jReXtyjESeTWEGZpcJGuWSnbRTf1" poster="../images/viva-la-vida.jpg"></video>
