@@ -236,6 +236,10 @@ blockquote.quote {
 
 }
 
+.post-tag {
+    letter-spacing: 0.6px;
+}
+
 @media (max-width: $maxWidth) {
     blockquote.quote {
         &.poetry {
@@ -260,6 +264,9 @@ blockquote.quote {
     }
     .site-brand .brand {
         font-family: 'Noto Serif SC' !important;
+    }
+    .post-tag {
+        letter-spacing: 0px;
     }
 }
 
