@@ -981,7 +981,7 @@ uglyURLs = false
     enableVideoHost = true
 
     # 视频外链地址
-    videoHostURL = "https://gateway.pinata.cloud/ipfs/"
+    videoHostURL = "https://hugo-blog-sources.oss-cn-hangzhou.aliyuncs.com/"
 
 
     ######################################
