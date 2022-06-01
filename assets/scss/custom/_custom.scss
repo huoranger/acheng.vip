@@ -262,9 +262,6 @@ blockquote.quote {
     .list-item-title {
         margin-left: 0px;
     }
-    .site-brand .brand {
-        font-family: 'Noto Serif SC' !important;
-    }
     .post-tag {
         letter-spacing: 0px;
     }
@@ -349,3 +346,6 @@ p code::after {
 //         color: white;
 //     }
 // }
+.site-brand .brand {
+    font-family: 'Noto Serif SC' !important;
+}
