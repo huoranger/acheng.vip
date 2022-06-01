@@ -6,12 +6,12 @@ dropCap = true
 
 <video src="Five%20Hundred%20Miles.mp4" poster="../images/《醉乡民谣》.jpg"></video>
 
-<h2 class="viva-la-vida">Viva La Vida</h2>
+<h2 class="viva-la-vida">Five Hundred Miles</h2>
 
-<p style="text-align:center"><em>I used to rule the world<br>
-Seas would rise when I gave the word<br>
-Now in the morning I sleep alone<br>
-Sweep the streets I used to own</em></p>
+<p style="text-align:center"><em>If you miss the train I'm on<br>
+You will know that I am gone<br>
+You can hear the whistle blow<br>
+A hundred miles</em></p>
 
 ---
 
