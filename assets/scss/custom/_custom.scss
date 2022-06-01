@@ -275,10 +275,10 @@ blockquote.quote {
 }
 
 
-em {
+// em {
     
-    font-style: normal;
-}
+//     font-style: normal;
+// }
 
 .chroma .nb {
     font-style: normal;
@@ -333,4 +333,19 @@ p code::after {
   }
 
 
-  
+//   404
+// .main-inner {
+//     background-color: white;
+// }
+.fof::before {
+    background-image: unset;
+}
+
+// [data-theme="dark"] {
+//     .main-inner {
+//         background-color: #16171d;
+//     }
+//     h1, .fof--footer a {
+//         color: white;
+//     }
+// }

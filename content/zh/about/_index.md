@@ -4,7 +4,7 @@ date = "2019-011-02T22:55:00+08:00"
 dropCap = true
 +++
 
-<video src="Five%20Hundred%20Miles.mp4" poster="../images/《醉乡民谣》.jpg"></video>
+<video src="Five%20Hundred%20Miles.mp4" poster="/images/《醉乡民谣》.jpg"></video>
 
 <h2 class="viva-la-vida">Five Hundred Miles</h2>
 
