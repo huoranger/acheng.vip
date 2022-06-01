@@ -16,7 +16,7 @@ const containerLineHeight = container.style.lineHeight;
 console.log(containerWidth,containerWidth);
 ```
 
-该方式只能获取写在标签上的属性，而不能获取写在 `<style></style>` 上的 CSS 属性，推荐一下方式：
+该方式只能获取写在标签上的属性，而不能获取写在 `<style></style>` 上的 CSS 属性，推荐以下方式：
 
 ```javascript
 val = window.getComputedStyle(document.querySelector('.container'),null)["lineHeight"];  
