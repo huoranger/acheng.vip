@@ -285,9 +285,12 @@ blockquote.quote {
     margin: 1rem 0;
     // font-family: SF !important;
     letter-spacing: 0.6px;
+    .kd {
+        font-style: normal;
+    }
 }
 
-p code {
+p code, ul code, ol code {
     font-family: Noto Serif SC !important;
     background: rgba(135,131,120,0.15);
     // color: #EB5757;
@@ -295,17 +298,21 @@ p code {
     font-size: 80%;
     padding: 0.2em 0.2em;
 }
-p code::before {
+p code::before, ul code::before, ol code::before {
     content: "`";
     display: inline;
 }
 
-p code::after {
+p code::after, ul code::after, ol code::after {
     content: "`";
     display: inline;
 }
 .post-body p, .post-body ul li, .post-body ol li {
     font-family: "Amstelvar","Noto Serif SC",serif !important;
+}
+
+.post-body h3 {
+    
 }
 
 // 滚动条样式
@@ -348,4 +355,25 @@ p code::after {
 // }
 .site-brand .brand {
     font-family: 'Noto Serif SC' !important;
+}
+
+
+.footnotes ol {
+    padding-left: 1.2em !important;
+}
+
+.table-container {
+    margin: 0 0;
+}
+
+.post img {
+    margin: 1em auto;
+}
+
+blockquote {
+    margin: 1em 0;
+}
+
+.content.post {
+    font-size: 15px;
 }

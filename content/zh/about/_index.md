@@ -4,14 +4,19 @@ date = "2019-011-02T22:55:00+08:00"
 dropCap = true
 +++
 
-<video src="Five%20Hundred%20Miles.mp4" poster="/images/《醉乡民谣》.jpg"></video>
+<video src="xunzhang.mp4?Expires=1654444387&OSSAccessKeyId=TMP.3Kf2nfXYdVar4tTagenLis4UMicGNtaNXk63ihpxnbqytuLeAZUNftmqKpyz99tK1BHgcCvMVr3vCKsT5w3EoF77bkMgcu&Signature=4D2RjNqts5m55H7e4ngYQ2%2B7Zmc%3D" poster="/images/xunzhang.png"></video>
 
-<h2 class="viva-la-vida">Five Hundred Miles</h2>
+<!-- <h2 class="viva-la-vida">Five Hundred Miles</h2>
 
 <p style="text-align:center"><em>If you miss the train I'm on<br>
 You will know that I am gone<br>
 You can hear the whistle blow<br>
-A hundred miles</em></p>
+A hundred miles</em></p> -->
+<h2 class="viva-la-vida">勋章</h2>
+
+<p style="text-align:center;"><em style="font-style: normal">前方是未知，迎面是海风<br>
+塞壬的歌，会诱人忘记初衷<br>
+</em></p>
 
 ---
 
