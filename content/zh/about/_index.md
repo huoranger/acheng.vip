@@ -4,7 +4,7 @@ date = "2019-011-02T22:55:00+08:00"
 dropCap = true
 +++
 
-<video src="xunzhang.mp4?Expires=1654444387&OSSAccessKeyId=TMP.3Kf2nfXYdVar4tTagenLis4UMicGNtaNXk63ihpxnbqytuLeAZUNftmqKpyz99tK1BHgcCvMVr3vCKsT5w3EoF77bkMgcu&Signature=4D2RjNqts5m55H7e4ngYQ2%2B7Zmc%3D" poster="/images/xunzhang.png"></video>
+<video src="xunzhang.mp4" poster="/images/xunzhang.png"></video>
 
 <!-- <h2 class="viva-la-vida">Five Hundred Miles</h2>
 
