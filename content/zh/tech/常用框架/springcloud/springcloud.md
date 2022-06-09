@@ -3,6 +3,7 @@ title: "再学 Spring Cloud"
 tags: ["SpringCloud"]
 date: "2022-06-03T00:00:00+08:00"
 toc: true
+mermaid: true
 ---
 
 **技术选型**
@@ -17,9 +18,9 @@ toc: true
 
 **微服务拆分的要求**
 
-* 服务和服务都必须有**各自的数据库**，相互独立
-* 服务**都对外暴露 Restful 的接口**
-* A 服务如果需要查询 B 服务信息，**只能调用用户 B 服务的 Restful 接口**，不能查询 B 的数据库
+* 服务和服务都必须有各自的数据库，相互独立
+* 服务都对外暴露 Restful 的接口
+* A 服务如果需要查询 B 服务信息，只能调用用户 B 服务的 Restful 接口，不能查询 B 的数据库
 
 **添加依赖**[^1]
 
@@ -141,16 +142,16 @@ public RestTemplate restTemplate(){
 
 这里的 `intercept()` 方法，拦截了用户的 HttpRequest 请求，然后做了几件事：
 
-- `request.getURI()`：获取请求 uri，即 `http://user-service/user/8`
-- `originalUri.getHost()`：获取 uri 路径的主机名，其实就是服务 id `user-service`
-- `this.loadBalancer.execute()`：处理服务 id，和用户请求
+- request.getURI()：获取请求 uri，即 `http://user-service/user/8`
+- originalUri.getHost()：获取 uri 路径的主机名，其实就是服务 id `user-service`
+- this.loadBalancer.execute()：处理服务 id，和用户请求
 
 可以看到获取服务时，通过一个 `getServer()` 方法来做负载均衡:
 
 ![image-20220605231553345](https://raw.githubusercontent.com/Coder-itCheng/blog-images/master/blog/image-20220605231553345.png)
 
-- `getLoadBalancer(serviceId)`：根据服务id获取 `ILoadBalancer`，而 `ILoadBalancer` 会拿着服务 id 去 eureka 中获取服务列表。
-- `getServer(loadBalancer)`：利用内置的负载均衡算法，从服务列表中选择一个。在图中**可以看到获取了 8000 端口的服务**
+- getLoadBalancer(serviceId)：根据服务id获取 `ILoadBalancer`，而 ILoadBalancer 会拿着服务 id 去 eureka 中获取服务列表。
+- getServer(loadBalancer)：利用内置的负载均衡算法，从服务列表中选择一个。在图中**可以看到获取了 8000 端口的服务**
 
 继续跟踪源码 `chooseServer()` 方法，发现这么一段代码：
 
