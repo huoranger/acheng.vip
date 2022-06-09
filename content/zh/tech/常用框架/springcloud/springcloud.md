@@ -62,9 +62,9 @@ mermaid: true
 
 ## Eureka 注册中心
 
-最广为人知的注册中心就是 Eureka，其结构如下：
+最广为人知的注册中心就是 Eureka，其基本原理如下：
 
-![image-20220605195955492](https://raw.githubusercontent.com/Coder-itCheng/blog-images/master/blog/202206052323872.png)
+![image-20220605195955492](https://raw.githubusercontent.com/Coder-itCheng/blog-images/master/blog/202206052323872.png "注册中心基本原理")
 
 ### 搭建注册中心
 
@@ -128,9 +128,9 @@ public RestTemplate restTemplate(){
 }
 ```
 
-负载均衡流程
 
-![image-20220605204842308](https://raw.githubusercontent.com/Coder-itCheng/blog-images/master/blog/202206052323239.png)
+
+![image-20220605204842308](https://raw.githubusercontent.com/Coder-itCheng/blog-images/master/blog/202206052323239.png "负载均衡流程")
 
 **源码跟踪**
 
