@@ -1,6 +1,6 @@
 ---
 title: "获取DOM元素的属性值"
-date: "2020-05-01T00:00:00+08:00"
+date: "2022-05-01T00:00:00+08:00"
 slug: "get-dom-properties-value"
 tags: ["JavaScript", "JQuery"]
 ---
