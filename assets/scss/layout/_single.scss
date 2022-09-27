@@ -115,12 +115,6 @@ ol, ul {
     }
 }
 
-@media only screen and (max-device-width: 1024px) {
-    .side-toc {
-        display: none;
-    }
-}
-
 .side-toc {
     box-sizing: border-box;
     position: fixed;
@@ -135,7 +129,7 @@ ol, ul {
     &:hover {
         opacity: 1;
     }
-    
+
     .contents {
         display: flex;
         flex-direction: column;
@@ -172,7 +166,7 @@ ol, ul {
                 word-break: break-all;
                 word-wrap: break-word;
             }
-            
+
         }
 
         ::-webkit-scrollbar {

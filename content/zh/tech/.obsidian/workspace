@@ -1,0 +1,136 @@
+{
+  "main": {
+    "id": "b82ae4e3078a8cfa",
+    "type": "split",
+    "children": [
+      {
+        "id": "179e02a0ee592854",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "剪辑/剪辑基础笔记.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a0e4dc64c9b1284b",
+    "type": "split",
+    "children": [
+      {
+        "id": "7e4af46fbd99ecbf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1b437c296390220b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "0ab0f35fd0d34db0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b8174cb4423aada6",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "163d4bb26bd5d797",
+    "type": "split",
+    "children": [
+      {
+        "id": "43eb6ae07107b393",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "50815d7308256e32",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "剪辑/剪辑基础笔记.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "df7d38321f3b9274",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "剪辑/剪辑基础笔记.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "27ac2e04325dc856",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "b6bb4fe2f38b9fcb",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "剪辑/剪辑基础笔记.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "179e02a0ee592854",
+  "lastOpenFiles": [
+    "javascrip/获取Dom元素所有的属性值.md",
+    "剪辑/剪辑基础笔记.md"
+  ]
+}

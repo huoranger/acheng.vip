@@ -4,6 +4,7 @@ tags: ["SpringCloud"]
 date: "2022-06-03T00:00:00+08:00"
 toc: true
 mermaid: true
+displayTOCPlace: "left"
 ---
 
 **技术选型**
