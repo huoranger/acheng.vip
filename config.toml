@@ -951,7 +951,7 @@ headAlso = false
 enableVideoHost = true
 
 # 视频外链地址
-videoHostURL = "https://hugo-blog-sources.oss-cn-hangzhou.aliyuncs.com/"
+videoHostURL = "http://acheng-vip.oss-cn-guangzhou.aliyuncs.com/"
 
 ######################################
 # 脚注
