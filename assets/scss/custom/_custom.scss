@@ -43,7 +43,7 @@
 }
 
 .menu-item {
-    .life, .tech, .about, .tag {
+    .life, .tech, .about, .tag, .phil {
         display: none;
     }
 }
@@ -430,3 +430,8 @@ blockquote {
 //     position: absolute;
 // }
 
+
+// 平滑滚动
+html, body  {
+    scroll-behavior: smooth !important;
+}

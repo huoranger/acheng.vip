@@ -9,7 +9,7 @@ title = "清风徐来"
 copyright = "在保留本文作者及本文链接的前提下，非商业用途随意转载分享。"
 
 # 主题选择
-theme = "meme"
+theme = ["meme", "hugo-shortcode-gallery", "hugo-shortcode-timeline"]
 
 # `hugo new` 新建文章自动打开的文本编辑器
 newContentEditor = ""
@@ -239,10 +239,17 @@ pageref = "/life/"
 post = "grav"
 pre = "internal"
 weight = 1
+# [[menu.main]]
+# identifier = "tech"
+# name = "技术"
+# pageref = "/tech/"
+# post = "wpexplorer"
+# pre = "internal"
+# weight = 2
 [[menu.main]]
-identifier = "tech"
-name = "技术"
-pageref = "/tech/"
+identifier = "phil"
+name = "哲学"
+pageref = "/phil/"
 post = "wpexplorer"
 pre = "internal"
 weight = 2
@@ -254,23 +261,30 @@ post = "tags"
 pre = "internal"
 weight = 3
 [[menu.main]]
+identifier = "photos"
+name = "画廊"
+pageref = "/photos/"
+post = "photos"
+pre = "internal"
+weight = 4
+[[menu.main]]
 identifier = "about"
 name = "关于"
 pageref = "/about/"
 post = "user-circle"
 pre = "internal"
-weight = 4
+weight = 5
 
 [[menu.main]]
 identifier = "theme-switcher"
-weight = 5
+weight = 6
 [[menu.main]]
 identifier = "search"
 post = "search"
-weight = 6
+weight = 7
 [[menu.main]]
 identifier = "lang-switcher"
-weight = 7
+weight = 8
 
 ## 首页的底部链接
 # [[menu.home]]
@@ -315,11 +329,12 @@ name = "主页"
 pageref = "/"
 pre = "internal"
 weight = 1
-[[menu.links]]
-name = "标签"
-pageref = "/tags/"
-pre = "internal"
-weight = 2
+# [[menu.links]]
+# name = "标签"
+# pageref = "/tags/"
+# pre = "internal"
+# weight = 2
+
 # [[menu.links]]
 #     pageref = "/coldplay/"
 #     name = "Coldplay"
@@ -492,7 +507,7 @@ enableTagCloud = true
 # 字号单位
 fontUnit = "em"
 # 最大字号
-largestFontSize = 2.5
+largestFontSize = 2.8
 # 最小字号
 smallestFontSize = 1
 
@@ -547,7 +562,7 @@ limitEntriesLimit = -1
 # 说明：分区的名字即站点的 content 目录下
 #      的文件夹的名字。
 
-mainSections = ["life", "tech"]
+mainSections = ["life", "phil"]
 
 ######################################
 # Atom & RSS
@@ -1484,3 +1499,8 @@ weight = 1
 #     enableEmphasisPoint = false
 #     enableChinesePunctuationGlyphCorrection = false
 #     customFooter = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"
+
+
+# gallery
+[imaging.exif]
+    includeFields = ".*"
