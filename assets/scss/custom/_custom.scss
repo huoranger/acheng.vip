@@ -32,7 +32,7 @@
 .life {
     color: #f37055;
 }
-.tech {
+.phil {
     color: #a166ab;
 }
 .about {
@@ -43,7 +43,7 @@
 }
 
 .menu-item {
-    .life, .tech, .about, .tag, .phil {
+    .life, .tech, .about, .tag, .phil, .photos {
         display: none;
     }
 }
@@ -68,7 +68,7 @@
         margin: 2em 0;
     }
     .menu-item {
-        .life, .tech, .about, .tag  {
+        .life, .tech, .about, .tag, .phil, photos  {
             display: inline-block;
         }
     }
@@ -89,6 +89,10 @@
     #lang-switcher {
         margin: 0;
     }
+    .list-title, .post-title {
+        margin: 0px;
+    }
+        
 }
 
 .nav-toggle {
@@ -266,6 +270,7 @@ blockquote.quote {
     .post-tag {
         letter-spacing: 0px;
     }
+
 }
 
 .post ol,.post  ul {
@@ -435,3 +440,10 @@ blockquote {
 html, body  {
     scroll-behavior: smooth !important;
 }
+
+// 手机h1标题
+// @media (max-width: 600px) {
+//     .list-title {
+//         margin: 0px;
+//     }
+// }
