@@ -341,6 +341,12 @@ p code::after, ul code::after, ol code::after {
   ::-webkit-scrollbar-corner {
     background-color: var(--color-bg);
   }
+  ::-webkit-scrollbar-thumb {
+      background-color: #a8a8a8;
+      background-clip: padding-box;
+      border: 3px solid transparent;
+      border-radius: 5px;
+  }
 
 
 //   404
@@ -446,4 +452,9 @@ html, body  {
 //     .list-title {
 //         margin: 0px;
 //     }
+// }
+
+// .header-wrapper {
+//     background: linear-gradient(90deg, rgba(247, 149, 51, 0.101961) 0, rgba(243, 112, 85, 0.101961) 15%, rgba(239, 78, 123, 0.101961) 30%, rgba(161, 102, 171, 0.101961) 44%, rgba(80, 115, 184, 0.101961) 58%, rgba(16, 152, 173, 0.101961) 72%, rgba(7, 179, 155, 0.101961) 86%, rgba(109, 186, 130, 0.101961) 100%);
+//     transition: background .5s;
 // }

@@ -687,23 +687,23 @@ mermaidThemeDark = 'dark'
 # 说明：仅在生产环境（production）下渲染
 
 # 是否开启（全局设置）
-enableComments = false
+enableComments = true
 # 说明：文章的 Front Matter 中的 `comments`
 #      的优先级高于此处
 
 # 直接加载评论，不需要手动点击按钮加载
-autoLoadComments = false
+autoLoadComments = true
 
 ## Disqus
 disqusShortname = ""
 enableDisqus = false
 
 ## Valine
-enableValine = false
-valineAppId = ""
-valineAppKey = ""
+enableValine = true
+valineAppId = "cNfrxTbEwKKwgsFF4K1JTI7w-gzGzoHsz"
+valineAppKey = "8ovxSTRqVBTHXB8hj1a7w0Nd"
 valineAvatar = "mm"
-valineAvatarForce = false
+valineAvatarForce = true
 valineEmojiCDN = ""
 valineEmojiMaps = {}
 valineEnableQQ = false
