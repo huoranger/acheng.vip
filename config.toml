@@ -687,7 +687,7 @@ mermaidThemeDark = 'dark'
 # 说明：仅在生产环境（production）下渲染
 
 # 是否开启（全局设置）
-enableComments = true
+enableComments = false
 # 说明：文章的 Front Matter 中的 `comments`
 #      的优先级高于此处
 
@@ -702,9 +702,9 @@ enableDisqus = false
 enableValine = true
 valineAppId = "cNfrxTbEwKKwgsFF4K1JTI7w-gzGzoHsz"
 valineAppKey = "8ovxSTRqVBTHXB8hj1a7w0Nd"
-valineAvatar = "mm"
+valineAvatar = "https://gravatar.loli.net/avatar/7eaf7905709245876756de07ef15803f?d=mp&v=1.4.14&q=1gil8bfos"
 valineAvatarForce = true
-valineEmojiCDN = ""
+valineEmojiCDN = "https://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/"
 valineEmojiMaps = {}
 valineEnableQQ = false
 valineHighlight = true
@@ -713,7 +713,7 @@ valineMeta = ["nick", "mail", "link"]
 valinePageSize = 10
 valinePath = ""
 valinePlaceholder = "Just go go"
-valineRecordIP = false
+valineRecordIP = true
 valineRequiredFields = []
 valineServerURLs = ""
 valineVisitor = false
