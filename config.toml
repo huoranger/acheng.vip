@@ -1358,7 +1358,7 @@ enableCopy = true
 enableCopyAutoHide = true
 
 # 开启音乐
-enableMusic=true
+enableMusic=false
 
 ######################################
 # 文件指纹和子资源完整性（SRI）
