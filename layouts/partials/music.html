@@ -1,0 +1,194 @@
+<!-- 音乐盒 -->
+{{- if .Site.Params.enableMusic -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+
+<meting-js server="netease" type="playlist" id="7769654686" fixed="true" mini="true" loop="all" lrc-type="1"
+    preload="auto" list-folded="false" autoplay="true">
+</meting-js>
+
+
+
+<script>
+    window.onload = function () {
+        if (!document.getElementsByClassName("aplayer-play")[0]) {
+            document.getElementsByClassName("aplayer-pic")[0].classList.add("rotation")
+        }
+        document.getElementsByClassName("container")[0].onclick = function (e) {
+            if (e.path.indexOf(document.getElementsByClassName("aplayer")[0]) != -1) {
+                return false
+            }
+            if (!document.getElementsByClassName("aplayer-narrow")[0]) {
+                document.getElementsByClassName("aplayer")[0].classList.add("aplayer-narrow")
+            }
+        }
+
+        document.getElementsByClassName("aplayer-icon-play")[0].onclick = function () {
+            if (document.getElementsByClassName("aplayer-play")[0]) {
+                document.getElementsByClassName("aplayer-pic")[0].classList.remove("rotation")
+            } else {
+                document.getElementsByClassName("aplayer-pic")[0].classList.add("rotation")
+            }
+        }
+        document.getElementsByClassName("aplayer-list")[0].onclick = function () {
+            if (document.getElementsByClassName("aplayer-play")[0]) {
+                document.getElementsByClassName("aplayer-pic")[0].classList.remove("rotation")
+            } else {
+                document.getElementsByClassName("aplayer-pic")[0].classList.add("rotation")
+            }
+        }
+        if (!document.getElementsByClassName("aplayer-list-hide")[0]) {
+            document.getElementsByClassName("aplayer-fixed")[0].style.borderRadius = "50px"
+        }
+        document.getElementsByClassName("aplayer-pic")[0].ondblclick = function () {
+            if (document.getElementsByClassName("aplayer-narrow")[0]) {
+                document.getElementsByClassName("aplayer")[0].classList.remove("aplayer-narrow")
+                document.getElementsByClassName("aplayer-list")[0].classList.add("aplayer-list-hide")
+            } else {
+                document.getElementsByClassName("aplayer")[0].classList.add("aplayer-narrow")
+            }
+        }
+        document.getElementsByClassName("aplayer-pic")[0].onclick = function () {
+            if (document.getElementsByClassName("aplayer-play")[0]) {
+                document.getElementsByClassName("aplayer-pic")[0].classList.remove("rotation")
+            } else {
+                document.getElementsByClassName("aplayer-pic")[0].classList.add("rotation")
+            }
+        }
+    }
+
+</script>
+
+<style>
+    .aplayer.aplayer-fixed .aplayer-body {
+        width: 180px !important;
+        /* box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%); */
+        padding-right: 0px !important;
+        border-radius: 50px;
+        border: 1px solid hsl(0, 0%, 95%);
+    }
+
+    .aplayer.aplayer-fixed .aplayer-info,
+    .aplayer.aplayer-fixed .aplayer-list {
+        border-top: 0px solid #e9e9e9;
+    }
+
+    .aplayer.aplayer-fixed {
+        max-width: 180px;
+
+    }
+
+    .aplayer-bar-wrap,
+    .aplayer-time-inner,
+    .aplayer-music,
+    .aplayer-volume-wrap,
+    .aplayer-icon-order,
+    .aplayer-icon-loop,
+    .aplayer-icon-lrc {
+        display: none !important;
+    }
+
+    .aplayer.aplayer-fixed .aplayer-icon-forward {
+        right: 25px;
+    }
+
+    .aplayer .aplayer-info .aplayer-controller {
+        display: unset !important;
+    }
+
+    .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+        position: unset !important;
+    }
+
+    .aplayer .aplayer-pic,
+    .aplayer.aplayer-narrow .aplayer-pic {
+        height: 32px;
+        width: 32px;
+    }
+
+    .aplayer.aplayer-narrow .aplayer-body,
+    .aplayer.aplayer-narrow .aplayer-pic {
+        height: 32px;
+    }
+
+    .aplayer .aplayer-info {
+        height: 32px;
+    }
+
+    .aplayer.aplayer-fixed .aplayer-list {
+        margin-bottom: 32px;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        width: 32px !important;
+    }
+
+    .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+        position: initial !important;
+        margin-top: 22px !important;
+    }
+
+    .aplayer.aplayer-fixed .aplayer-body,
+    .aplayer.aplayer-fixed {
+        bottom: 3rem;
+        left: 3rem;
+    }
+
+    .aplayer .aplayer-pic,
+    .aplayer.aplayer-narrow .aplayer-pic {
+        border-radius: 50%;
+    }
+
+    .aplayer-button.aplayer-pause {
+        display: none;
+    }
+
+    .aplayer.aplayer-fixed .aplayer-miniswitcher {
+        background-color: unset !important;
+        left: 2rem;
+        display: none;
+    }
+
+    .aplayer.aplayer-fixed .aplayer-icon-back {
+        right: 100px;
+    }
+
+    .aplayer.aplayer-fixed .aplayer-icon-play {
+        right: 75px;
+    }
+
+    .aplayer.aplayer-fixed .aplayer-icon-forward {
+        right: 50px;
+    }
+
+    .aplayer .aplayer-list ol {
+        margin-bottom: 1rem;
+        border: 1px solid hsl(0, 0%, 95%);
+        border-radius: 0.5rem;
+    }
+
+    .aplayer.aplayer-fixed .aplayer-list {
+        border: 0px solid #eee;
+    }
+
+    /* 图片旋转 */
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        50% {
+            transform: rotate(360deg);
+        }
+
+        100% {
+            transform: rotate(720deg);
+        }
+    }
+
+    .rotation {
+        animation: rotation 10s linear .5s infinite;
+    }
+</style>
+{{- end }}
