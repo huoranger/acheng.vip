@@ -173,7 +173,7 @@ hr.coldplay {
 }
 @font-face {
     font-family: 'lora';
-    src: url('#{$baseRelURL}/fonts/Lora-Regular.otf');
+    src: url('#{$baseRelURL}/fonts/Lora-Regular.ttf');
 }
 :root {
     --text-wdth: 90;
@@ -390,7 +390,7 @@ blockquote {
 }
 
 .content.post {
-    font-size: 15px;
+    // font-size: 15px;
 }
 
 //  超链接样式
