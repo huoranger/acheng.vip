@@ -269,8 +269,9 @@ pre = "internal"
 weight = 4
 [[menu.main]]
 identifier = "about"
-name = "「我」"
-pageref = "/about/"
+# name = "「我」"
+name = "我"
+pageref = "/me/"
 post = "user-circle"
 pre = "internal"
 weight = 5
