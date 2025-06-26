@@ -1043,7 +1043,7 @@ uglyURLs = false
     fontFamilyFooter = "'Source Code Pro', 'Noto Serif SC', monospace"
     # 主体
     # fontFamilyBody = "'Amstelvar', 'Noto Serif SC', serif"
-	fontFamilyBody = "'I.MingCP', serif"
+	fontFamilyBody = "'I.MingCP', Amstelvar"
 
     # 网络字体链接
     fontsLink = "https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&family=Noto+Serif+SC:wght@700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel+Decorative:wght@700&display=swap"

@@ -9,10 +9,10 @@
         font-family: $fontFamilyTitle;
     }
 }
-em {
-    font-family: 'Amstelvar', serif;
-    font-variation-settings: 'wght' 280;
-}
+// em {
+//     font-family: 'Amstelvar', serif;
+//     font-variation-settings: 'wght' 280;
+// }
 .emphasis-point {
     font-family: $fontFamilyBody;
 }
@@ -93,7 +93,7 @@ em {
         margin: 2em 0;
     }
     .menu-item {
-        .life, .tech, .about, .tag, .phil, .monent, .trading  {
+        .life, .tech, .about, .tag, .phil, .moment, .trading  {
             display: inline-block;
         }
     }
@@ -291,14 +291,6 @@ body {
         'YTLC' var(--text-YTLC);
 }
 
-
-.post-title {
-    font-family: 'glyph-correction', 'Amstelvar', 'Noto Serif SC', serif;
-    font-variation-settings:
-        'wght' 550,
-        'opsz' 60,
-        'YOPQ' 90;
-}
 
 .list-item-time {
     font-feature-settings: 'tnum';
