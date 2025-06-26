@@ -1,17 +1,38 @@
-
-:root {
-    --color-text: #141414;
-}
 .main {
     padding-bottom: 5em;
 }
 
 .post-body {
     margin-top: 4em !important;
+
+    p strong {
+        font-family: $fontFamilyTitle;
+    }
+}
+em {
+    font-family: 'Amstelvar', serif;
+    font-variation-settings: 'wght' 280;
+}
+.emphasis-point {
+    font-family: $fontFamilyBody;
+}
+.safari-only {
+    /* Safari-only fixes */
+    .emphasis-point {
+        text-decoration-line: underline;
+        text-decoration-style: dashed;
+        text-underline-offset: 0.25em;
+    }
+}
+* {
+    font-feature-settings: 'halt';
 }
 
-.list-title, .term-title, .list-year, .list-month {
-    font-family: 'glyph-correction', 'Cinzel Decorative', 'Noto Serif SC', serif;
+.list-title, .term-title, .list-year, .list-month, [data-type="about"] .post-title {
+    font-family: 'glyph-correction', 'Cinzel Decorative', 'I.MingCP', serif;
+}
+.list-item-time {
+    font-feature-settings: 'tnum';
 }
 
 .brand {
@@ -32,7 +53,7 @@
 .life {
     color: #f37055;
 }
-.phil {
+.trading {
     color: #a166ab;
 }
 .about {
@@ -41,21 +62,25 @@
 .tag {
     color: #ef4e7b
 }
+.moment {
+	color: skyblue;
+}
 
 .menu-item {
-    .life, .tech, .about, .tag, .phil, .photos {
+    .life, .tech, .about, .tag, .phil, .moment, .trading {
         display: none;
     }
 }
-[data-theme="dark"] {
-    .theme-icon-dark, #lang-switcher, .footer-icon {
-        opacity: 0.75;
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        .theme-icon-dark {
+            opacity: 0.75;
+        }
     }
 }
-
-[data-theme="ligth"] {
-    body {
-        color: var(--color-text);
+[data-theme="dark"] {
+    .theme-icon-dark {
+        opacity: 0.75;
     }
 }
 
@@ -68,7 +93,7 @@
         margin: 2em 0;
     }
     .menu-item {
-        .life, .tech, .about, .tag, .phil, photos  {
+        .life, .tech, .about, .tag, .phil, .monent, .trading  {
             display: inline-block;
         }
     }
@@ -142,6 +167,84 @@ hr.coldplay {
         padding-left: 2em;
         line-height: $lineHeight;
         list-style-type: disc;
+    }
+}
+
+.post-title {
+    font-family: 'glyph-correction', 'Amstelvar', 'Noto Serif TC', 'Noto Serif SC', serif;
+    font-variation-settings:
+        'wght' 550,
+        'opsz' 60,
+        'YOPQ' 90;
+}
+
+article:lang(en) p {
+    --font-size: 18px;
+    --line-height: 1.618;
+
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+}
+article:lang(en) .drop-cap {
+    font-size: 3em;
+    margin-right: 16px;
+    margin-top: 15px !important;
+    line-height: calc(var(--font-size) * var(--line-height));
+}
+
+blockquote.quote {
+    position: relative;
+    margin: 2em auto !important;
+    padding-left: 3em;
+    color: inherit;
+    border: none;
+    p {
+        text-indent: 0 !important;
+    }
+    &::before {
+        position: absolute;
+        left: 0;
+        content: '“';
+        font-size: 3em;
+        font-weight: bold;
+        line-height: 1;
+    }
+    &.poetry {
+        display: table;
+        padding: 0;
+        &::before {
+            left: -1em;
+        }
+        p {
+            margin: 0 0 1em;
+        }
+        p:last-child {
+            margin: 0;
+        }
+    }
+    &.en {
+        p {
+            line-height: 1.618;
+            text-align: left;
+        }
+    }
+    &.italic {
+        p {
+            font-style: italic;
+            font-family: 'Amstelvar', 'I.MingCP', serif;
+            font-variation-settings: 'wght' 280;
+        }
+    }
+}
+
+@media (max-width: $maxWidth) {
+    blockquote.quote {
+        &.poetry {
+            padding-left: 3em;
+            &::before {
+                left: 0;
+            }
+        }
     }
 }
 
@@ -300,7 +403,7 @@ blockquote.quote {
 }
 
 p code, ul code, ol code {
-    font-family: "Consolas", "Menlo", "Monaco", serif !important;
+    // font-family: "Consolas", "Menlo", "Monaco", serif !important;
     background: rgba(135,131,120,0.15);
     // color: #EB5757;
     border-radius:1px;
@@ -316,9 +419,9 @@ p code::after, ul code::after, ol code::after {
     // content: "`";
     display: inline;
 }
-.post-body p, .post-body ul li, .post-body ol li {
-    font-family: "Amstelvar","Noto Serif SC",serif !important;
-}
+// .post-body p, .post-body ul li, .post-body ol li {
+//     font-family: "Amstelvar","Noto Serif SC",serif !important;
+// }
 
 .post-body h3 {
     
@@ -368,9 +471,9 @@ p code::after, ul code::after, ol code::after {
 //         color: white;
 //     }
 // }
-.site-brand .brand {
-    font-family: 'Noto Serif SC' !important;
-}
+// .site-brand .brand {
+//     font-family: 'Noto Serif SC' !important;
+// }
 
 
 .footnotes ol {

@@ -18,7 +18,7 @@
         {{ end }}
         {{ end }}
         {{ else if eq .Identifier "lang-switcher" }}
-        {{ if and $.Site.IsMultiLingual $.Site.Params.enableLangToggle }}
+        {{ if and hugo.IsMultilingual $.Site.Params.enableLangToggle }}
         {{ if eq $.Site.Params.headerLayout "flex" }}
         {{ $switcher := partial "components/multilingual.html" $ctx }}
         {{ with $switcher }}
@@ -37,11 +37,10 @@
         </li>
         {{ end }}
         {{ else }}
-        <li class="menu-item{{ if or ($currentPage.IsMenuCurrent " main" .) ($currentPage.HasMenuCurrent "main" .) }}
-            active{{ end }}">
+        <li class="menu-item{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{ end }}">
             {{- $linkType := (string .Pre) -}}
             <!-- 判断是否画廊连接 -->
-            <a href="{{ if eq .URL ""}} /photos/  {{ else }} {{.URL}} {{end}}" {{ if eq $linkType "external" }} target="_blank" rel="external noopener" {{ end }}>
+            <a href="{{ .URL | default "/moment/" }}" {{ if eq $linkType "external" }} target="_blank" rel="external noopener" {{ end }}>
                 {{- $iconName := (string .Post) -}}
                 {{- partial "utils/icon.html" (dict "$" $ "name" $iconName "class" .Identifier) -}}
                 {{- with .Name -}}

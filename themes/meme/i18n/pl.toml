@@ -63,6 +63,12 @@ other = "Znaleziono {{ .Count }} wyniki/ów dla: “{{ .Term }}”"
 [searchResultsNone]
 other = "Brak wyników dla: “{{ .Term }}”"
 
+[backToTop]
+other = "Powrót do góry"
+
+[themeSwitcher]
+other = "Przełącz motyw"
+
 
 # Socials
 
@@ -71,6 +77,12 @@ other = "Twitter"
 
 [facebook]
 other = "Facebook"
+
+[fediverse]
+other = "Fediverse"
+
+[mastodon]
+other = "Mastodon"
 
 [linkedin]
 other = "LinkedIn"
@@ -90,8 +102,41 @@ other = "QQ"
 [qzone]
 other = "Qzone"
 
+[pocket]
+other = "Pocket"
+
+[hackernews]
+other = "Hacker News"
+
 [qrcode]
 other = "QR Code"
+
+[email]
+other = "e-mail"
+
+
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "Ta funkcjonalność wymaga włączonej obsługi JavaScript!"
+
+[fedishareTitleLabel]
+other = "Tytuł posta"
+
+[fedishareDescriptionLabel]
+other = "Opis (można zmienić w następnym kroku)"
+
+[fedishareUrlLabel]
+other = "Połączyć"
+
+[fedishareInstanceLabel]
+other = "Instancja Fediverse"
+
+[fedishareRememberInstance]
+other = "Zapamiętaj instancję na tym urządzeniu"
+
+[fedishareSubmitLabel]
+other = "Przejdź do instancji"
 
 
 # Months

@@ -25,10 +25,10 @@
     {{- $anchor := $icon | default .Site.Params.anchorSymbol | default "§" -}}
 
     {{- if .Site.Params.enableAnchorLink -}}
-        {{- $replacement := (printf `$1<a href="#$2" class="anchor-link">%s</a>$3$4` $anchor) -}}
+        {{- $replacement := (printf `$1<a href="#$2" class="anchor-link" aria-label="$2">%s</a>$3$4` $anchor) -}}
         {{- $.Scratch.Set "replacement" $replacement -}}
     {{- else -}}
-        {{- $replacement := (printf `$1<span class="anchor-link">%s</span>$3$4` $anchor) -}}
+        {{- $replacement := (printf `$1<span class="anchor-link" aria-hidden="true">%s</span>$3$4` $anchor) -}}
         {{- $.Scratch.Set "replacement" $replacement -}}
     {{- end -}}
     {{- $replacement := .Scratch.Get "replacement" -}}
@@ -114,12 +114,12 @@
 <!-- Image Hosting -->
 {{- if and .Site.Params.enableImageHost (eq hugo.Environment "production") -}}
     {{- $hostURL := strings.TrimSuffix "/" .Site.Params.imageHostURL -}}
-    {{- $temps := findRE `<(img) src="/?([^":]+)` $Content | uniq -}}
+    {{- $temps := findRE `<(img)\s+[^>]*?src="/?([^":]+)` $Content | uniq -}}
     {{- with $temps -}}
         {{- range . -}}
-            {{- if not (in (slice "http" "ttps") (substr . -1 4)) -}}
-                {{- $url := replaceRE `<(img) src="/?([^":]+)` `$2` . -}}
-                {{- $prefix := replaceRE `(<(img) src=")/?([^":]+)` `$1` . -}}
+            {{- $url := replaceRE `<(img)\s+[^>]*?src="/?([^":]+)` `$2` . -}}
+            {{- if ne (substr $url 0 4) "http" -}}
+                {{- $prefix := replaceRE `(<(img)\s+[^>]*?src=")/?([^":]+)` `$1` . -}}
                 {{- $replacement := (printf `%s%s/%s` $prefix $hostURL $url) -}}
                 {{- $Content = replace $Content . $replacement -}}
             {{- end -}}
@@ -130,12 +130,12 @@
 <!-- Video Hosting -->
 {{- if and .Site.Params.enableVideoHost (eq hugo.Environment "production") -}}
     {{- $hostURL := strings.TrimSuffix "/" .Site.Params.videoHostURL -}}
-    {{- $temps := findRE `<(video) src="/?([^":]+)` $Content | uniq -}}
+    {{- $temps := findRE `<(video)\s+[^>]*?src="/?([^":]+)` $Content | uniq -}}
     {{- with $temps -}}
         {{- range . -}}
-            {{- if not (in (slice "http" "ttps") (substr . -1 4)) -}}
-                {{- $url := replaceRE `<(video) src="/?([^":]+)` `$2` . -}}
-                {{- $prefix := replaceRE `(<(video) src=")/?([^":]+)` `$1` . -}}
+            {{- $url := replaceRE `<(video)\s+[^>]*?src="/?([^":]+)` `$2` . -}}
+            {{- if ne (substr $url 0 4) "http" -}}
+                {{- $prefix := replaceRE `(<(video)\s+[^>]*?src=")/?([^":]+)` `$1` . -}}
                 {{- $replacement := (printf `%s%s/%s` $prefix $hostURL $url) -}}
                 {{- $Content = replace $Content . $replacement -}}
             {{- end -}}

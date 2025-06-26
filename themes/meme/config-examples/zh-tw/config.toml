@@ -18,6 +18,10 @@ newContentEditor = ""
 defaultContentLanguage = "zh-tw"
 defaultContentLanguageInSubdir = false
 
+# 標題大小寫格式
+# https://gohugo.io/getting-started/configuration/#configure-title-case
+titleCaseStyle = "none"
+
 # 是否複數化列表頁面的標題
 pluralizeListTitles = false
 
@@ -35,9 +39,6 @@ enableGitInfo = false
 
 # 是否生成 robots.txt 檔案
 enableRobotsTXT = true
-
-# 每一分頁的文章數（僅對「文章摘要」首頁佈局有效）
-paginate = 5
 
 # URL 相關
 disablePathToLower = false
@@ -57,6 +58,12 @@ uglyURLs = false
 # 修改時間
 [frontmatter]
     lastmod = ["lastmod", ":git", ":fileModTime", ":default"]
+
+[pagination]
+    disableAliases = false
+    # 每一分頁的文章數（僅對「文章摘要」首頁佈局有效）
+    pagerSize = 5
+    path = 'page'
 
 # Markdown 渲染器
 [markup]
@@ -92,21 +99,6 @@ uglyURLs = false
 # 壓縮 HTML
 [minify.tdewolff.html]
     keepWhitespace = false
-
-# 作者資訊
-[author]
-    # 名字
-    name = "reuixiy"
-    # 郵箱
-    email = "reuixiy@gmail.com"
-    # 座右銘或簡介
-    motto = "Viva La Vida"
-    # 頭像
-    avatar = "/icons/apple-touch-icon.png"
-    # 網站（預設值：baseURL）
-    website = "https://io-oi.me/"
-    # 推特
-    twitter = "reuixiy"
 
 # 相關文章
 [related]
@@ -329,6 +321,11 @@ uglyURLs = false
     homeKeywords = ""
     homeLinksDelimiter = ""
 
+    ## 「文章摘要」
+    enableHideInHomepage = false
+    # 說明：激活 `hideInHomepage` front matter
+    #      的支持（性能原因默認關閉）
+
 
     ######################################
     # 站點資訊
@@ -481,6 +478,10 @@ uglyURLs = false
     #      有一個比手動指定更高的優先順序——
     #      Front Matter 中的 `description`。
 
+    # 客製頁尾（支援 Template 與 Markdown 語法）
+    feedFooter = """> 閱讀原文：<{{ .Permalink }}>  
+> 網誌公告：網誌現已開通郵件訂閱，歡迎[透過 Substack 訂閱](https://username.substack.com)支援我的創作！"""
+
 
     ######################################
     # 深色模式
@@ -511,12 +512,7 @@ uglyURLs = false
     # 網頁應用
 
     # 說明：前往 https://realfavicongenerator.net/
-    #      生成相關圖示和檔案，下載後解壓，僅保留
-    #      android-chrome-512x512.png、
-    #      apple-touch-icon.png、
-    #      mstile-150x150.png、
-    #      safari-pinned-tab.svg、favicon.ico、
-    #      site.webmanifest 這些檔案，刪除其餘。
+    #      生成相關圖示和檔案，下載後解壓。
     #      然後將這些檔案移動到 ~/blog/static/icons/
     #      目錄下，再將 favicon.ico、site.webmanifest
     #      移動到 ~/blog/static/ 目錄下，
@@ -524,10 +520,16 @@ uglyURLs = false
     #      manifest.json，並檢查和修改相關內容
     #      （圖示的路徑）。
 
+    # 注意：要檢查你的圖標
+    #      請前往 https://realfavicongenerator.net/favicon-checker。
+    #      如果偵測到任何問題，檢查生成的檔案和
+    #      ~/blog/themes/meme/static/ 目錄下
+    #      相關檔案的檔案名稱差異。如果有差異，
+    #      這意味著某些文件可能已經過時。
+    #      如有需要，請提 Issue。
+
     themeColor = "#fff"
     themeColorDark = "#16171d"
-    safariMaskColor = "#2a6df4"
-    msApplicationTileColor = "#fff"
 
 
     ######################################
@@ -643,15 +645,73 @@ uglyURLs = false
     gitalkRepo = "your_repository"
     gitalkOwner = "your_gitalk_owner"
     gitalkAdmin = ["your_gitalk_admin"]
-    gitalkLable = ["Gitalk"]
+
+    # 1. default (`location.href`)
+    # 2. pathname (`location.pathname`)
+    # 3. hash (hash_filepath)
+    # 4. custom:your_gitalk_id ("your_gitalk_id")
+    gitalkID = "pathname"
+
+    gitalkNumber = -1
+    gitalkLables = ["Gitalk"]
+
+    # 1. default (`document.title`)
+    # 2. custom:your_gitalk_title ("your_gitalk_title")
+    gitalkTitle = "default"
+
+    # 1. default (`location.href` + header.meta[description])
+    # 2. href (`location.href`)
+    # 3. custom:your_gitalk_body ("your_gitalk_body")
+    gitalkBody = "default"
+
+    # 1. default (`navigator.language || navigator.userLanguage`)
+    # 2. Support [en, zh-CN, zh-TW, es-ES, fr, ru, de, pl, ko, fa, ja]
+    gitalkLanguage = "zh-TW"
+
     gitalkDistractionFreeMode = false
     gitalkPerPage = 10
-    gitalkLanguage = "en"
     gitalkPagerDirection = "last"
     gitalkCreateIssueManually = false
     gitalkProxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"
+    gitalkStaggerDelayBy = 150
+    gitalkAppearAnimation = "accordionVertical"
+    gitalkEnterAnimation = "accordionVertical"
+    gitalkLeaveAnimation = "accordionVertical"
     gitalkEnableHotKey = true
     # 說明：https://github.com/gitalk/gitalk
+
+    ## Giscus
+    enableGiscus = false
+    giscusRepo = "[ENTER repo/you/want HERE]"
+    giscusRepoId = "[ENTER REPO ID HERE]"
+    giscusCategory = "[ENTER CATEGORY NAME HERE]"
+    giscusCategoryId = "[ENTER CATEGORY ID HERE]"
+    giscusMapping = "pathname"
+    giscusStrict = false
+    giscusReactionsEnabled = true
+    giscusEmitMetaData = false
+    giscusInputPosition = "top"
+    giscusTheme = "light"
+    giscusThemeDark = "dark"
+    giscusLang = "zh-TW"
+    # 說明：https://giscus.app/zh-TW
+
+    # Remark42
+    enableRemark42 = false
+    remark42Host = ""
+    remark42SiteId = "remark"
+    remark42Url = ""
+    remark42Components = ["embed"]
+    remark42MaxShownComments = 15
+    remark42MaxLastComments = 15
+    remark42Theme = "light"
+    remark42PageTitle = ""
+    remark42Locale = "zh-tw"
+    remark42ShowEmailSubscription = true
+    remark42ShowRssSubscription = true
+    remark42SimpleView = false
+    remark42NoFooter = false
+    # 說明：https://remark42.com/docs/configuration/frontend/
 
 
     ######################################
@@ -687,6 +747,8 @@ uglyURLs = false
     ## 廣告單元
     enableGoogleAdUnits = false
     googleAdSlot = ""
+    googleAdSlotInArticle = ""
+    googleAdSlotAutoRelaxed = ""
 
 
     ######################################
@@ -802,8 +864,6 @@ uglyURLs = false
     # 說明：文章的 Front Matter 中的 `toc`
     #      的優先順序高於此處
 
-    displayTOCPlace = "center"
-
     # 是否顯示目錄標題
     displayTOCTitle = true
 
@@ -852,7 +912,7 @@ uglyURLs = false
     enableCaption = true
 
     # 說明文字的字首
-    captionPrefix = "◎ "
+    captionPrefix = "※ "
 
 
     ######################################
@@ -933,11 +993,11 @@ uglyURLs = false
     # 選單欄
     fontFamilyMenu = ""
     # 文章標題、文章副標題、列表標題、列表的年份和月份標題、相關文章標題、文章上下篇標題、表格的表頭、定義列表中的術語
-    fontFamilyTitle = "'Noto Serif SC', 'EB Garamond', serif"
+    fontFamilyTitle = "'Noto Serif TC', serif"
     # 分節標題、目錄標題
-    fontFamilyHeadings = "'Noto Serif SC', 'EB Garamond', serif"
+    fontFamilyHeadings = "'Noto Serif TC', serif"
     # 程式碼、上標、文章元資訊、文章更新徽章、文章的 Git 版本資訊、極簡頁尾、不蒜子站點瀏覽計數
-    fontFamilyCode = "'Source Code Pro', 'Noto Serif SC', monospace"
+    fontFamilyCode = "'Source Code Pro', 'Noto Serif TC', monospace"
     # 引用
     fontFamilyQuote = ""
     # 文章目錄
@@ -947,10 +1007,10 @@ uglyURLs = false
     # 頁尾
     fontFamilyFooter = ""
     # 主體
-    fontFamilyBody = "'EB Garamond', 'Noto Serif SC', serif"
+    fontFamilyBody = "'Noto Serif TC', serif"
 
     # 網路字型連結
-    fontsLink = "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    fontsLink = "https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     # 說明：要想讀者一定體驗到你設定的字型，最好
     #      採用網路字型。MemE 主題目前僅支援
     #      Google Fonts 的連結，請前往
@@ -960,7 +1020,7 @@ uglyURLs = false
     ######################################
     ## 字號（單位：px）
 
-    fontSize = 16
+    fontSize = 18
 
     ######################################
     ## 製表符的寬度
@@ -1085,6 +1145,7 @@ uglyURLs = false
     repoURL = ""
     # 編輯地址
     repoEditURL = ""
+    repoEditURLSuffix = ""
 
     # Git 的圖示
     gitIcon = "code-branch"
@@ -1124,16 +1185,13 @@ uglyURLs = false
 
     displayShareOnText = false
 
-    shareOnTwitter = true
-    shareOnFacebook = true
-    shareOnLinkedIn = true
-    shareOnTelegram = true
-    shareOnWeibo = true
-    shareOnDouban = true
-    shareOnQQ = true
-    shareOnQzone = true
+    postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "pocket", "hackernews", "qrcode", "email"]
 
-    shareViaQRCode = true
+    # 從網路取得 Fediverse 實例清單用於輸入建議
+    fetchFediverseInstances = false
+    # 說明：當開啟 mastodon 或 fediverse 分享項
+    #      時建議開啟。開啟後建置時，資料需要從網
+    #      路下載，會帶來額外的建置時間。
 
 
     ######################################
@@ -1239,6 +1297,9 @@ uglyURLs = false
     iconColor = "#f06292"
     # 是否開啟圖示的跳動效果
     iconAnimation = true
+
+    # 是否顯示站點的作者名稱
+    displaySiteAuthorName = true
 
     # 是否顯示 Hugo 和 MemE 的連結
     displayPoweredBy = true
@@ -1415,3 +1476,22 @@ uglyURLs = false
         valine = "/npm/valine@1.4.14/dist/Valine.min.js"
         busuanzi = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
         utterances = "https://utteranc.es/client.js"
+
+
+    ######################################
+    # 作者資訊
+    [params.author]
+        # 名字
+        name = "reuixiy"
+        # 郵箱
+        email = "reuixiy@gmail.com"
+        # 座右銘或簡介
+        motto = "Viva La Vida"
+        # 頭像
+        avatar = "/icons/apple-touch-icon.png"
+        # 網站（預設值：baseURL）
+        website = "https://io-oi.me/"
+        # 推特
+        twitter = "reuixiy"
+        # Fediverse
+        fediverse = "@reuixiy@bird.makeup"

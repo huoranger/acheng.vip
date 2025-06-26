@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>蓝皮猫的铜锣烧</title>
+        <link>http://localhost:1313/zh-cn/</link>
+        <description>分享欲需要靠回应来延续，热情也是。</description>
+        <generator>Hugo 0.147.9 https://gohugo.io/</generator>
+        
+            <language>zh-CN</language>
+        
+        
+            <managingEditor>huoranger@163.com</managingEditor>
+        
+        
+            <webMaster>huoranger@163.com</webMaster>
+        
+        
+        <lastBuildDate>Wed, 25 Jun 2025 18:52:49 &#43;0800</lastBuildDate>
+        
+            <atom:link rel="self" type="application/rss&#43;xml" href="http://localhost:1313/zh-cn/rss.xml" />
+        
+        
+    </channel>
+</rss>

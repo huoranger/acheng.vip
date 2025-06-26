@@ -16,15 +16,15 @@
 icon = "envelope"
 id = "email"
 title = "Email"
-url = "mailto:hzc200012@163.com"
+url = "mailto:huoranger@163.com"
 weight = 2
 
-[[socials]]
-icon = "github"
-id = "github"
-title = "GitHub"
-url = "https://github.com/coder-itcheng"
-weight = 3
+#[[socials]]
+#icon = "github"
+#id = "github"
+#title = "GitHub"
+#url = "https://github.com/coder-itcheng"
+#weight = 3
 
 # [[socials]]
 # icon = "twitter"

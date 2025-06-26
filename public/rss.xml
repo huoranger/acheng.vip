@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>蓝皮猫的铜锣烧</title>
+        <link>http://localhost:1313/</link>
+        <description>分享欲需要靠回应来延续，热情也是。</description>
+        <generator>Hugo 0.147.9 https://gohugo.io/</generator>
+        
+            <language>zh-cn</language>
+        
+        
+            <managingEditor>huoranger@163.com (huoranger)</managingEditor>
+        
+        
+            <webMaster>huoranger@163.com (huoranger)</webMaster>
+        
+        
+        <lastBuildDate>Thu, 26 Jun 2025 10:58:50 &#43;0800</lastBuildDate>
+        
+            <atom:link rel="self" type="application/rss&#43;xml" href="http://localhost:1313/rss.xml" />
+        
+        
+            <item>
+                <title>二十二号夜晚</title>
+                <link>http://localhost:1313/life/first-work-end/</link>
+                <guid isPermaLink="true">http://localhost:1313/life/first-work-end/</guid>
+                <pubDate>Tue, 22 Nov 2022 00:00:00 &#43;2300</pubDate>
+                
+                    <author>huoranger@163.com (huoranger)</author>
+                
+                
+                
+                
+                <description>
+                        感谢遇见，后会无期
+                        &lt;blockquote&gt;
+&lt;p&gt;阅读原文：&lt;a href=&#34;http://localhost:1313/life/first-work-end/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://localhost:1313/life/first-work-end/&lt;/a&gt;&lt;br&gt;
+博客公告：博客现已开通邮件订阅，欢迎&lt;a href=&#34;https://username.substack.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;通过 Substack 订阅&lt;/a&gt;支持我的创作！&lt;/p&gt;&lt;/blockquote&gt;
+                    </description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="http://localhost:1313/life/">life\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="http://localhost:1313/tags/%E7%94%9F%E6%B4%BB/">生活</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="http://localhost:1313/tags/%E6%83%85%E6%84%9F/">情感</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+    </channel>
+</rss>

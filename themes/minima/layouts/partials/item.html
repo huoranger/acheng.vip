@@ -1,0 +1,24 @@
+<div>
+  <div class="flex flex-col-reverse sm:flex-row sm:justify-between">
+    {{ if .Page.Params.link }}
+    <a class="text-lg font-bold" href="{{ .Page.Params.link }}">{{ .Title }}</a>
+    {{ else }}
+    <a class="text-lg font-bold" href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{ end }}
+    {{ if .Site.Params.displayDate }}
+    <div class="text-sm font-bold whitespace-nowrap">{{ .Date | time.Format (T "timeformat") }}</div>
+    {{ end }}
+    <!-- <div class="mw2 posts-categories">
+      {{ range .Params.categories }}
+      <div class="posts-category">
+        <a href="/categories/{{ lower . }}/"><strong>{{ . }}</strong></a>
+      </div>
+      {{ end }}
+    </div> -->
+  </div>
+  {{ if .Site.Params.displayDescription }}
+  <p class="text-base mb-2">
+    {{ .Description | markdownify | safeHTML }}
+  </p>
+  {{ end }}
+</div>

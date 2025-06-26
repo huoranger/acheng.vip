@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-cn">
+    <title type="text">蓝皮猫的铜锣烧</title>
+    <subtitle type="html">分享欲需要靠回应来延续，热情也是。</subtitle>
+    <updated>2025-06-26T10:58:50&#43;08:00</updated>
+    <id>http://localhost:1313/</id>
+    <link rel="alternate" type="text/html" href="http://localhost:1313/" />
+    <link rel="self" type="application/atom&#43;xml" href="http://localhost:1313/atom.xml" />
+    <author>
+            <name>huoranger</name>
+            <uri>http://localhost:1313/</uri>
+            
+                <email>huoranger@163.com</email>
+            </author>
+    
+    <generator uri="https://gohugo.io/" version="0.147.9">Hugo</generator>
+        <entry>
+            <title type="text">二十二号夜晚</title>
+            <link rel="alternate" type="text/html" href="http://localhost:1313/life/first-work-end/" />
+            <id>http://localhost:1313/life/first-work-end/</id>
+            <updated>2025-06-26T10:58:49&#43;08:00</updated>
+            <published>2022-11-22T00:00:00&#43;23:00</published>
+            <author>
+                    <name>huoranger</name>
+                    <uri>https://acheng.vip</uri>
+                    <email>huoranger@163.com</email>
+                    </author>
+            <summary type="html">
+                感谢遇见，后会无期
+                &lt;blockquote&gt;
+&lt;p&gt;阅读原文：&lt;a href=&#34;http://localhost:1313/life/first-work-end/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://localhost:1313/life/first-work-end/&lt;/a&gt;&lt;br&gt;
+博客公告：博客现已开通邮件订阅，欢迎&lt;a href=&#34;https://username.substack.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;通过 Substack 订阅&lt;/a&gt;支持我的创作！&lt;/p&gt;&lt;/blockquote&gt;
+            </summary>
+            
+            
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="http://localhost:1313/life/" term="life\" label="life\" />
+                        
+                    
+                
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="http://localhost:1313/tags/%E7%94%9F%E6%B4%BB/" term="生活" label="生活" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="http://localhost:1313/tags/%E6%83%85%E6%84%9F/" term="情感" label="情感" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

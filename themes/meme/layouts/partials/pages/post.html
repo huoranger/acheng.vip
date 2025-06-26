@@ -1,21 +1,10 @@
 <main class="main single" id="main">
-
-    {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC }}
-    {{ $displayTOCPlace := .Params.tocPlace | default .Site.Params.displayTOCPlace }}
-    {{ $enableSideTOC := or (eq $displayTOCPlace "left") (eq $displayTOCPlace "right") }}
-
-    {{- if and $enableTOC $enableSideTOC -}}
-    <div class="side-toc"
-    {{- with $displayTOCPlace -}} data-toc-place="{{ . }}"{{- end -}}>
-        {{- partial "utils/toc.html" . -}}  
-    </div>
-    {{- end -}}
-
     <div class="main-inner">
 
         {{ $attrs := partial "utils/data-attributes.html" . }}
 
         <article class="content post h-entry"
+        {{- with .Params.languageCode }} lang="{{ . }}"{{ end }}
         {{- if $attrs.smallCaps }} data-small-caps="true"{{ end }}
         {{- with $attrs.align }} data-align="{{ . }}"{{ end }}
         {{- with $attrs.type }} data-type="{{ . }}"{{ end }}
@@ -42,7 +31,7 @@
             {{ end }}
 
             {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
-            {{- if and $enableTOC (not $enableSideTOC) -}}
+            {{- if $enableTOC -}}
                 {{- partial "utils/toc.html" . -}}
             {{- end -}}
 

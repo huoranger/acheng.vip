@@ -8,7 +8,7 @@ English |
 
 ## Description
 
-MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) theme for personal blogs. MemE focuses on elegance, simplicity, modernity, and code correctness. Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just like what your blog and articles do! 😝
+MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) theme for personal blogs, which focuses on elegance, simplicity, modernity, and best practices in coding.
 
 ## Preview
 
@@ -132,9 +132,17 @@ See [#2](https://github.com/reuixiy/hugo-theme-meme/issues/2).
   | outputs                                     | \*                                                                                                       | array                                                                        |
   | aliases                                     | \*                                                                                                       | array                                                                        |
   | markup                                      | \*                                                                                                       | string                                                                       |
-  | meta                                        | set `false` to disable post-meta                                                                         | boolean                                                                      |
+  | hideInHomepage                              | hide this post in homepage posts list                                                                    | boolean, valid for "posts" homepage with `enableHideInHomepage` enabled      |
+  | languageCode                                | add `lang` attribute with this value to `<article>`                                                      | string                                                                       |
+  | meta                                        | set `false` to disable post-meta                                                                         | boolean, override `enablePostMeta` in `config.toml`                          |
+  | displayPublishedDate                        | display published date in post-meta                                                                      | boolean, override `displayPublishedDate` in `config.toml`                    |
+  | displayModifiedDate                         | display modified date in post-meta                                                                       | boolean, override `displayModifiedDate` in `config.toml`                     |
+  | displayExpiryDate                           | display expiry date in post-meta                                                                         | boolean, override `displayExpiryDate` in `config.toml`                       |
+  | displayCategory                             | display category in post-meta                                                                            | boolean, override `displayCategory` in `config.toml`                         |
+  | displayWordCount                            | display word count in post-meta                                                                          | boolean, override `displayWordCount` in `config.toml`                        |
+  | displayReadingTime                          | display reading time in post-meta                                                                        | boolean, override `displayReadingTime` in `config.toml`                      |
+  | displayBusuanziPagePV                       | display page views in post-meta                                                                          | boolean, override `displayBusuanziPagePV` in `config.toml`                   |
   | toc                                         | display TOC                                                                                              | boolean, override `enableTOC` in `config.toml`                               |
-  | tocPlace                                    | display TOC place                                                                                        | string("left","center","right"), override `displayTOCPlace` in `config.toml` |
   | tocNum                                      | display TOC number                                                                                       | boolean, override `displayTOCNum` in `config.toml`                           |
   | anchor                                      | enable headings anchor                                                                                   | boolean, override `enableHeadingsAnchor` in `config.toml`                    |
   | displayCopyright                            | display post-copyright                                                                                   | boolean, override `displayPostCopyright` in `config.toml`                    |
@@ -162,10 +170,21 @@ See [#2](https://github.com/reuixiy/hugo-theme-meme/issues/2).
   | motto                                       | author’s description                                                                                     | string                                                                       |
   | avatar                                      | author’s avatar                                                                                          | string, URL                                                                  |
   | twitter                                     | author’s twitter id                                                                                      | string                                                                       |
+  | fediverse                                   | author’s fediverse id                                                                                    | string                                                                       |
   | disqus_url                                  | \*                                                                                                       | string, if not set, will use `Permalink` as default                          |
   | disqus_identifier                           | \*                                                                                                       | string, if not set, will use `RelPermalink` as default                       |
   | disqus_title                                | \*                                                                                                       | string, if not set, will use `Title` as default                              |
 
-  \*: see https://gohugo.io/content-management/front-matter/  
+  \*: see https://gohugo.io/content-management/front-matter/
       and https://gohugo.io/templates/internal/#configure-disqus
 </details>
+
+## Sponsorship
+
+We are grateful to the following sponsors for their support:
+
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/reuixiy?style=social)](https://github.com/sponsors/reuixiy)
+
+[![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com?aff=QuirkyKoala717 "Powered by DartNode - Free VPS for Open Source")
+
+*: _Some of these links are affiliate links, which means that if you click on one of the product links, I’ll receive a small commission. This helps support me to spend more time developing MemE. Thank you for the support!_

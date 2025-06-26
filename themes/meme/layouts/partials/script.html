@@ -20,7 +20,7 @@
     {{- $scripts = union $scripts (slice "js/dark-mode.js") -}}
 {{- end -}}
 
-{{- if and .Site.IsMultiLingual .Site.Params.enableLangToggle -}}
+{{- if and hugo.IsMultilingual .Site.Params.enableLangToggle -}}
     {{- $scripts = union $scripts (slice "js/multilingual.js") -}}
 {{- end -}}
 
@@ -63,5 +63,3 @@
 {{- else -}}
     <script src="{{ $script.RelPermalink }}"></script>
 {{- end }}
-
-
