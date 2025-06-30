@@ -1,0 +1,16 @@
+{
+    "name": "清风徐来",
+    "short_name": "清风徐来",
+    "icons": [
+        {
+            "src": "./icons/favicon.ico",
+            "sizes": "512x512",
+            "type": "image/ico"
+        }
+    ],
+    "theme_color": "#fff",
+    "background_color": "#fff",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "start_url": "./"
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.147.9"><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>使用 Guava 实现本地缓存 | 蓝皮猫的铜锣烧</title>
+
+    <link rel="stylesheet" href="/css/meme.min.css" />
+
+    
+    
+        
+            <script src="/js/meme.min.js"></script><script src="/js/meme.min.js"></script>
+
+
+
+        
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto&#43;Serif&#43;TC:wght@700&amp;family=Noto&#43;Serif&#43;SC:wght@700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;family=Cinzel&#43;Decorative:wght@700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto&#43;Serif&#43;TC:wght@700&amp;family=Noto&#43;Serif&#43;SC:wght@700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;family=Cinzel&#43;Decorative:wght@700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="huoranger" /><meta name="description" content="引入 Guava 所需要的依赖包
+&lt;dependency&gt; &lt;groupId&gt;com.google.guava&lt;/groupId&gt; &lt;artifactId&gt;guava&lt;/artifactId&gt; &lt;version&gt;32.1.2-jre&lt;/version&gt; &lt;/dependency&gt; 使用「旁路模型构」建缓存
+private final LoadingCache&lt;Long, User&gt; storage = CacheBuilder.newBuilder() // 设置初始容量 .initialCapacity(10) // 限制数量，最大值（也可限制对象栈内存总大小） .maximumSize(100) // 并发数量 .concurrencyLevel(5) // 写入10分钟后过期 .expireAfterWrite(10, TimeUnit.MINUTES) // 统计缓存命中率 .recordStats() // 使用旁路型缓存（数据不存在，回源查找，放入缓存） .build( new CacheLoader&lt;&gt;() { @Override public User load(Long key) { log.info(&#34;用户:{}缓存不存在，尝试CacheLoader回源查找并回填...&#34;, key); return new User().setId(1L).setName(&#34;蓝皮猫&#34;); } } ); @SneakyThrows public User getUser(Long key) { User user = null; try { user = storage.get(key); } finally { System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(storage.stats())); } return user; } public void putUser(Long key, User value) { storage.put(key, value); } " />
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="蓝皮猫的铜锣烧" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="蓝皮猫的铜锣烧" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+        <link rel="canonical" href="http://localhost:1313/tech/some-mess/%E4%BD%BF%E7%94%A8guava%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "datePublished": "2024-08-22T00:00:00+00:00",
+        "dateModified": "2025-06-30T22:51:10+08:00",
+        "url": "http://localhost:1313/tech/some-mess/%E4%BD%BF%E7%94%A8guava%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98/",
+        "name": "使用 Guava 实现本地缓存",
+        "description": "引入 Guava 所需要的依赖包\n\u003cdependency\u003e \u003cgroupId\u003ecom.google.guava\u003c/groupId\u003e \u003cartifactId\u003eguava\u003c/artifactId\u003e \u003cversion\u003e32.1.2-jre\u003c/version\u003e \u003c/dependency\u003e 使用「旁路模型构」建缓存\nprivate final LoadingCache\u003cLong, User\u003e storage = CacheBuilder.newBuilder() // 设置初始容量 .initialCapacity(10) // 限制数量，最大值（也可限制对象栈内存总大小） .maximumSize(100) // 并发数量 .concurrencyLevel(5) // 写入10分钟后过期 .expireAfterWrite(10, TimeUnit.MINUTES) // 统计缓存命中率 .recordStats() // 使用旁路型缓存（数据不存在，回源查找，放入缓存） .build( new CacheLoader\u003c\u003e() { @Override public User load(Long key) { log.info(\"用户:{}缓存不存在，尝试CacheLoader回源查找并回填...\", key); return new User().setId(1L).setName(\"蓝皮猫\"); } } ); @SneakyThrows public User getUser(Long key) { User user = null; try { user = storage.get(key); } finally { System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(storage.stats())); } return user; } public void putUser(Long key, User value) { storage.put(key, value); } ",
+        "image": "http://localhost:1313/icons/favicon.ico",
+        "publisher": {
+            "@type": "Organization",
+            "name": "蓝皮猫的铜锣烧",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http://localhost:1313/icons/favicon.ico"
+            },
+            "url": "http://localhost:1313/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "http://localhost:1313/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:site" content="@xucome_" />
+<meta name="twitter:creator" content="@xucome_" />
+
+    
+
+
+
+<meta property="og:title" content="使用 Guava 实现本地缓存" />
+<meta property="og:description" content="引入 Guava 所需要的依赖包
+&lt;dependency&gt; &lt;groupId&gt;com.google.guava&lt;/groupId&gt; &lt;artifactId&gt;guava&lt;/artifactId&gt; &lt;version&gt;32.1.2-jre&lt;/version&gt; &lt;/dependency&gt; 使用「旁路模型构」建缓存
+private final LoadingCache&lt;Long, User&gt; storage = CacheBuilder.newBuilder() // 设置初始容量 .initialCapacity(10) // 限制数量，最大值（也可限制对象栈内存总大小） .maximumSize(100) // 并发数量 .concurrencyLevel(5) // 写入10分钟后过期 .expireAfterWrite(10, TimeUnit.MINUTES) // 统计缓存命中率 .recordStats() // 使用旁路型缓存（数据不存在，回源查找，放入缓存） .build( new CacheLoader&lt;&gt;() { @Override public User load(Long key) { log.info(&#34;用户:{}缓存不存在，尝试CacheLoader回源查找并回填...&#34;, key); return new User().setId(1L).setName(&#34;蓝皮猫&#34;); } } ); @SneakyThrows public User getUser(Long key) { User user = null; try { user = storage.get(key); } finally { System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(storage.stats())); } return user; } public void putUser(Long key, User value) { storage.put(key, value); } " />
+<meta property="og:url" content="http://localhost:1313/tech/some-mess/%E4%BD%BF%E7%94%A8guava%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98/" />
+<meta property="og:site_name" content="蓝皮猫的铜锣烧" />
+<meta property="og:locale" content="zh-cn" /><meta property="og:image" content="http://localhost:1313/icons/favicon.ico" />
+    <meta property="og:type" content="website" />
+
+
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@700&amp;text=reuixiy&amp;display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@700&amp;text=reuixiy&amp;display=swap" /></noscript>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/reuixiy/fonts@build/css/fonts.min.css" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/reuixiy/fonts@build/css/fonts.min.css" /></noscript>
+</head>
+
+
+<body>
+    <div class="container">
+        
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">蓝皮猫的铜锣烧</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+        
+        
+        
+        
+        
+        
+        <li class="menu-item">
+            <a href="/life/" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon life"><path d="M301.1 212c4.4 4.4 4.4 11.9 0 16.3l-9.7 9.7c-4.4 4.7-11.9 4.7-16.6 0l-10.5-10.5c-4.4-4.7-4.4-11.9 0-16.6l9.7-9.7c4.4-4.4 11.9-4.4 16.6 0l10.5 10.8zm-30.2-19.7c3-3 3-7.8 0-10.5-2.8-3-7.5-3-10.5 0-2.8 2.8-2.8 7.5 0 10.5 3.1 2.8 7.8 2.8 10.5 0zm-26 5.3c-3 2.8-3 7.5 0 10.2 2.8 3 7.5 3 10.5 0 2.8-2.8 2.8-7.5 0-10.2-3-3-7.7-3-10.5 0zm72.5-13.3c-19.9-14.4-33.8-43.2-11.9-68.1 21.6-24.9 40.7-17.2 59.8.8 11.9 11.3 29.3 24.9 17.2 48.2-12.5 23.5-45.1 33.2-65.1 19.1zm47.7-44.5c-8.9-10-23.3 6.9-15.5 16.1 7.4 9 32.1 2.4 15.5-16.1zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-66.2 42.6c2.5-16.1-20.2-16.6-25.2-25.7-13.6-24.1-27.7-36.8-54.5-30.4 11.6-8 23.5-6.1 23.5-6.1.3-6.4 0-13-9.4-24.9 3.9-12.5.3-22.4.3-22.4 15.5-8.6 26.8-24.4 29.1-43.2 3.6-31-18.8-59.2-49.8-62.8-22.1-2.5-43.7 7.7-54.3 25.7-23.2 40.1 1.4 70.9 22.4 81.4-14.4-1.4-34.3-11.9-40.1-34.3-6.6-25.7 2.8-49.8 8.9-61.4 0 0-4.4-5.8-8-8.9 0 0-13.8 0-24.6 5.3 11.9-15.2 25.2-14.4 25.2-14.4 0-6.4-.6-14.9-3.6-21.6-5.4-11-23.8-12.9-31.7 2.8.1-.2.3-.4.4-.5-5 11.9-1.1 55.9 16.9 87.2-2.5 1.4-9.1 6.1-13 10-21.6 9.7-56.2 60.3-56.2 60.3-28.2 10.8-77.2 50.9-70.6 79.7.3 3 1.4 5.5 3 7.5-2.8 2.2-5.5 5-8.3 8.3-11.9 13.8-5.3 35.2 17.7 24.4 15.8-7.2 29.6-20.2 36.3-30.4 0 0-5.5-5-16.3-4.4 27.7-6.6 34.3-9.4 46.2-9.1 8 3.9 8-34.3 8-34.3 0-14.7-2.2-31-11.1-41.5 12.5 12.2 29.1 32.7 28 60.6-.8 18.3-15.2 23-15.2 23-9.1 16.6-43.2 65.9-30.4 106 0 0-9.7-14.9-10.2-22.1-17.4 19.4-46.5 52.3-24.6 64.5 26.6 14.7 108.8-88.6 126.2-142.3 34.6-20.8 55.4-47.3 63.9-65 22 43.5 95.3 94.5 101.1 59z"/></svg><span class="menu-item-name">生活</span></a>
+        </li>
+        
+        
+        
+        <li class="menu-item">
+            <a href="/trading/" ><svg t="1750762996830" class="icon trading" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1072" width="200" height="200"><path d="M279.734564 511.997953c0-106.632599 71.216995-196.578144 168.654164-224.955448L448.388728 92.846618C245.281891 124.381845 89.796654 299.982212 89.796654 511.99386c0 212.026998 155.485237 387.625318 358.592075 419.159522L448.388728 736.956472C350.951559 708.580191 279.734564 618.634646 279.734564 511.997953z" p-id="1073"></path><path d="M579.70245 92.857874l0 194.193841c97.452519 28.387537 168.655188 118.324896 168.655188 224.946238 0 106.625436-71.202669 196.562794-168.655188 224.949308L579.70245 931.140079C782.84715 899.577223 938.294524 723.993229 938.294524 511.99386 938.294524 300.004725 782.84715 124.419707 579.70245 92.857874z" p-id="1074"></path><path d="M641.933793 511.998977c0 70.64292-57.259098 127.875412-127.903042 127.875412-70.614268 0-127.872343-57.233516-127.872343-127.875412 0-70.63985 57.259098-127.873366 127.872343-127.873366C584.674695 384.124588 641.933793 441.358103 641.933793 511.998977z" p-id="1075"></path></svg><span class="menu-item-name">交易</span></a>
+        </li>
+        
+        
+        
+        <li class="menu-item">
+            <a href="/tags/" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="icon tag"><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg><span class="menu-item-name">标签</span></a>
+        </li>
+        
+        
+        
+        <li class="menu-item">
+            <a href="/moment/" ><svg t="1750762711079" class="icon moment" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="927" width="200" height="200"><path d="M847.42208 331.008a43.136 43.136 0 0 1-24.768-7.936 46.464 46.464 0 0 1-16.448-20.992 49.024 49.024 0 0 1 9.664-51.072 44.032 44.032 0 0 1 22.848-12.8 42.624 42.624 0 0 1 25.792 2.688c8.128 3.52 15.104 9.536 19.968 17.28a48.512 48.512 0 0 1-5.504 59.136 42.688 42.688 0 0 1-31.552 13.696z m-334.336 435.84c-46.272 0-91.52-14.4-129.92-41.408A243.392 243.392 0 0 1 297.02208 615.232a256.96 256.96 0 0 1-13.312-141.824 249.6 249.6 0 0 1 64-125.696 230.592 230.592 0 0 1 119.68-67.2 223.552 223.552 0 0 1 135.168 13.952c42.688 18.56 79.232 50.048 104.96 90.432 25.664 40.32 39.36 87.872 39.36 136.384a256 256 0 0 1-17.728 94.016 246.592 246.592 0 0 1-50.688 79.616c-21.76 22.784-47.552 40.96-75.904 53.248a224.128 224.128 0 0 1-89.472 18.688z m447.168-588.032h-203.136a176 176 0 0 1-51.264-68.928c-20.48-45.632-94.144-45.632-94.144-45.632H375.48608s-24.64-6.4-53.312 45.632A216 216 0 0 1 268.86208 178.816H65.79008c-8.96 0.192-17.728 2.24-25.856 6.08a67.2 67.2 0 0 0-21.632 16.064 71.04 71.04 0 0 0-14.016 23.68 73.6 73.6 0 0 0-4.16 27.52v570.688c-0.384 9.344 1.088 18.688 4.16 27.52 3.2 8.704 7.936 16.768 14.08 23.552 6.08 6.848 13.44 12.288 21.568 16.064 8.128 3.84 16.96 5.824 25.856 6.016H958.14208c8.96-0.192 17.664-2.24 25.856-6.08a67.2 67.2 0 0 0 21.568-16 71.04 71.04 0 0 0 14.08-23.68c3.072-8.704 4.48-18.048 4.16-27.392V252.16a70.592 70.592 0 0 0-16.512-51.264 64.512 64.512 0 0 0-21.312-16.192 61.76 61.76 0 0 0-25.728-5.888zM513.08608 347.008c-32.832 0-64.96 10.24-92.224 29.44-27.328 19.072-48.64 46.336-61.12 78.144a182.4 182.4 0 0 0-9.472 100.736c6.4 33.792 22.208 64.832 45.44 89.216 23.168 24.32 52.8 40.96 84.992 47.68a158.72 158.72 0 0 0 95.872-9.92 168 168 0 0 0 74.496-64.192 180.48 180.48 0 0 0 27.968-96.832 179.392 179.392 0 0 0-48.704-123.2 162.688 162.688 0 0 0-117.248-51.264v0.192z" p-id="928"></path></svg><span class="menu-item-name">瞬间</span></a>
+        </li>
+        
+        
+        
+        <li class="menu-item">
+            <a href="/me/" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon about"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class="menu-item-name">我</span></a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="menu-item">
+            <button id="theme-switcher" type="button" aria-label="切换主题"><span class="icon theme-icon-light">🌞</span><span class="icon theme-icon-dark">🌙</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon theme-icon-system"><path d="M528 0H48C21.5 0 0 21.5 0 48v320c0 26.5 21.5 48 48 48h192l-16 48h-72c-13.3 0-24 10.7-24 24s10.7 24 24 24h272c13.3 0 24-10.7 24-24s-10.7-24-24-24h-72l-16-48h192c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zm-16 352H64V64h448v288z"/></svg></button>
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+        
+        
+    <main class="main single" id="main">
+
+    
+    
+    <div class="main-inner">
+
+        
+
+        <article class="content post h-entry" data-align="justify" data-type="tech" data-toc-num="true">
+
+            <h1 class="post-title p-name">使用 Guava 实现本地缓存</h1>
+
+            
+
+            
+                
+            
+
+            
+
+            <div class="post-body e-content">
+                <p style="text-indent:0"><span class="drop-cap">引</span>入 Guava 所需要的依赖包</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>com.google.guava<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>guava<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;version&gt;</span>32.1.2-jre<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>使用「旁路模型构」建缓存</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">LoadingCache</span><span class="o">&lt;</span><span class="n">Long</span><span class="p">,</span><span class="w"> </span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">storage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CacheBuilder</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 设置初始容量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">.</span><span class="na">initialCapacity</span><span class="p">(</span><span class="n">10</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 限制数量，最大值（也可限制对象栈内存总大小）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">.</span><span class="na">maximumSize</span><span class="p">(</span><span class="n">100</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 并发数量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">.</span><span class="na">concurrencyLevel</span><span class="p">(</span><span class="n">5</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 写入10分钟后过期</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">.</span><span class="na">expireAfterWrite</span><span class="p">(</span><span class="n">10</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">MINUTES</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 统计缓存命中率</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">.</span><span class="na">recordStats</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 使用旁路型缓存（数据不存在，回源查找，放入缓存）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="k">new</span><span class="w"> </span><span class="n">CacheLoader</span><span class="o">&lt;&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="kd">public</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                            </span><span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&#34;用户:{}缓存不存在，尝试CacheLoader回源查找并回填...&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                            </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">User</span><span class="p">().</span><span class="na">setId</span><span class="p">(</span><span class="n">1L</span><span class="p">).</span><span class="na">setName</span><span class="p">(</span><span class="s">&#34;蓝皮猫&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@SneakyThrows</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="nf">getUser</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">storage</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">GsonBuilder</span><span class="p">().</span><span class="na">setPrettyPrinting</span><span class="p">().</span><span class="na">create</span><span class="p">().</span><span class="na">toJson</span><span class="p">(</span><span class="n">storage</span><span class="p">.</span><span class="na">stats</span><span class="p">()));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">user</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">putUser</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">storage</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
+            </div>
+
+            
+
+
+        </article>
+
+        
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+
+        
+
+
+    </div>
+</main>
+
+        
+    <div id="back-to-top" class="back-to-top">
+        <a href="#top" aria-label="回到顶部">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
+        </a>
+    </div>
+
+
+        
+
+        
+
+    </div>
+    
+
+    
+
+
+
+
+
+
+
+
+    <script src="/js/medium-zoom.min.js"></script>
+
+<script>
+    mediumZoom(document.querySelectorAll('div.post-body img'), {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+
+
+
+<script>
+    
+    if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
+        document.body.classList.add('safari-only');
+    }
+</script>
+
+
+</body>
+
+</html>
